@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigation } from './components/Navigation';
 import { PokemonCard } from './components/PokemonCard';
 
@@ -6,6 +6,8 @@ const LIMIT = 150;
 const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
 
 function App() {
+
+  const [pokeData, setPokeData] = useState([]);
 
   return (
     <div data-testid="app">
