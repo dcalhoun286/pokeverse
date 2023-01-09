@@ -14,6 +14,7 @@ function App() {
     const responseData = await response.json();
     const pokemonArray = responseData.results;
     console.log('pokeApi response data', pokemonArray);
+    setPokeData(pokemonArray);
   };
 
   useEffect(() => {
@@ -25,6 +26,11 @@ function App() {
       <Navigation />
 
       <h1>Pokemon should appear here</h1>
+      {
+        pokeData.length && pokeData.map(pokemon => (
+          <p>{pokemon.name}</p>
+        ))
+      }
       <PokemonCard />
     </div>
   );
