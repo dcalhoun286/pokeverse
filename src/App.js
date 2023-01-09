@@ -28,7 +28,13 @@ function App() {
       <h1>Pokemon should appear here</h1>
       {
         pokeData.length && pokeData.map(pokemon => (
-          <p>{pokemon.name}</p>
+
+          <PokemonCard
+            key={pokemon.name}
+            name={pokemon.name}
+            url={pokemon.url}
+          />
+          
         ))
       }
       <PokemonCard />
