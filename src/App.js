@@ -7,7 +7,7 @@ const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
 
 function App() {
 
-  const [pokeData, setPokeData] = useState([]);
+  const [ pokeData, setPokeData ] = useState([]);
 
   const fetchPokemonData = async () => {
     const response = await fetch(pokeApi);
@@ -34,7 +34,7 @@ function App() {
             name={pokemon.name}
             url={pokemon.url}
           />
-          
+
         ))
       }
       <PokemonCard />
