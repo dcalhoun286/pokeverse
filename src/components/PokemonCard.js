@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Card } from 'react-bootstrap';
+
 function PokemonCard({ url, name }) {
 
   const [ singlePokemonSprites, setSinglePokemonSprites ] = useState([]);
