@@ -9,8 +9,15 @@ function App() {
 
   const [pokeData, setPokeData] = useState([]);
 
+  const fetchPokemonData = async () => {
+    const response = await fetch(pokeApi);
+    const responseData = await response.json();
+    const pokemonArray = responseData.results;
+    console.log('pokeApi response data', pokemonArray);
+  };
+
   useEffect(() => {
-    // fetch pokemon and update state here
+    fetchPokemonData();
   }, []);
 
   return (
