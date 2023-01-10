@@ -18,16 +18,16 @@ function App() {
     const pokemonArray = responseData.results;
     console.log('pokeApi response data', pokemonArray);
     setPokeData(pokemonArray);
+    setFilteredPokeData(pokemonArray);
   };
 
   const handlePokemonSearch = (e) => {
     e.preventDefault();
-    console.log('change occurred: ', Boolean(e.target.value.length));
 
     if (e.target.value.length) {
       const regex = new RegExp(e.target.value, 'gi');
       const filtered = pokeData.filter(pokemon => {
-        return pokemon.name.match(regex) || pokemon.name.contains(regex);
+        return pokemon.name.match(regex) || pokemon.name.toLowerCase().includes(e.target.value.toLowerCase());
       });
 
       setFilteredPokeData(filtered);
@@ -54,7 +54,7 @@ function App() {
       </InputGroup>
       <h1>Pokemon should appear here</h1>
       {
-        pokeData.length && pokeData.map(pokemon => (
+        filteredPokeData.length && filteredPokeData.map(pokemon => (
 
           <PokemonCard
             key={pokemon.name}
