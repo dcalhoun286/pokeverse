@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { InputGroup, FormControl } from 'react-bootstrap';
+
 import { Navigation } from './components/Navigation';
 import { PokemonCard } from './components/PokemonCard';
 
