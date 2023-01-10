@@ -22,7 +22,7 @@ function PokemonCard({ url, name }) {
 
   return (
     <Card>
-      <Card.Img variant='top' src={singlePokemonSprite} />
+      <Card.Img style={{backgroundColor: '#2e2e2e'}} variant='top' src={singlePokemonSprite} />
       <Card.Title>{name}</Card.Title>
       <Card.Text>
         <ul>
