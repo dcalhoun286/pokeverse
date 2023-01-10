@@ -43,38 +43,40 @@ function App() {
   }, []);
 
   return (
-    <div data-testid="app">
-      <Navigation />
-      <InputGroup>
-        <FormControl
-          placeholder='Enter a pokemon'
-          aria-label='Enter a pokemon'
-          onChange={handlePokemonSearch}
-        />
-      </InputGroup>
-      <h1>Pokemon should appear here</h1>
+    <Container>
+      <div data-testid="app">
+        <Navigation />
+        <InputGroup>
+          <FormControl
+            placeholder='Enter a pokemon'
+            aria-label='Enter a pokemon'
+            onChange={handlePokemonSearch}
+          />
+        </InputGroup>
+        <h1>Pokemon should appear here</h1>
 
-      <Container>
-        <Row>
+        <Container>
+          <Row>
 
-          {
-            filteredPokeData.length && filteredPokeData.map(pokemon => (
+            {
+              filteredPokeData.length && filteredPokeData.map(pokemon => (
 
-              <Col className='col-12 col-sm-6 col-md-4 col-xl-3'>
-                <PokemonCard
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                />
-              </Col>
+                <Col className='col-12 col-sm-6 col-md-4 col-xl-3'>
+                  <PokemonCard
+                    key={pokemon.name}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                  />
+                </Col>
 
-            ))
-          }
+              ))
+            }
 
-        </Row>
-      </Container>
-      <PokemonCard />
-    </div>
+          </Row>
+        </Container>
+        <PokemonCard />
+      </div>
+    </Container>
   );
 }
 
