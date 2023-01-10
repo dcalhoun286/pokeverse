@@ -26,7 +26,12 @@ function App() {
   return (
     <div data-testid="app">
       <Navigation />
-
+      <InputGroup>
+        <FormControl
+          placeholder='Enter a pokemon'
+          aria-label='Enter a pokemon'
+        />
+      </InputGroup>
       <h1>Pokemon should appear here</h1>
       {
         pokeData.length && pokeData.map(pokemon => (
