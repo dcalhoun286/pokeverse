@@ -10,6 +10,7 @@ const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
 function App() {
 
   const [ pokeData, setPokeData ] = useState([]);
+  const [ filteredPokeData, setFilteredPokeData ] = useState([]);
 
   const fetchPokemonData = async () => {
     const response = await fetch(pokeApi);
@@ -17,6 +18,24 @@ function App() {
     const pokemonArray = responseData.results;
     console.log('pokeApi response data', pokemonArray);
     setPokeData(pokemonArray);
+  };
+
+  const handlePokemonSearch = (e) => {
+    e.preventDefault();
+    console.log('change occurred: ', Boolean(e.target.value.length));
+
+    if (e.target.value.length) {
+      const regex = new RegExp(e.target.value, 'gi');
+      const filtered = pokeData.filter(pokemon => {
+        return pokemon.name.match(regex) || pokemon.name.contains(regex);
+      });
+
+      setFilteredPokeData(filtered);
+
+    } else {
+      setFilteredPokeData([...pokeData]);
+    }
+
   };
 
   useEffect(() => {
@@ -30,6 +49,7 @@ function App() {
         <FormControl
           placeholder='Enter a pokemon'
           aria-label='Enter a pokemon'
+          onChange={handlePokemonSearch}
         />
       </InputGroup>
       <h1>Pokemon should appear here</h1>
