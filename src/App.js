@@ -53,17 +53,26 @@ function App() {
         />
       </InputGroup>
       <h1>Pokemon should appear here</h1>
-      {
-        filteredPokeData.length && filteredPokeData.map(pokemon => (
 
-          <PokemonCard
-            key={pokemon.name}
-            name={pokemon.name}
-            url={pokemon.url}
-          />
+      <Container>
+        <Row>
 
-        ))
-      }
+          {
+            filteredPokeData.length && filteredPokeData.map(pokemon => (
+
+              <Col className='col-12 col-sm-6 col-md-4 col-lg-3'>
+                <PokemonCard
+                  key={pokemon.name}
+                  name={pokemon.name}
+                  url={pokemon.url}
+                />
+              </Col>
+
+            ))
+          }
+
+        </Row>
+      </Container>
       <PokemonCard />
     </div>
   );
