@@ -22,10 +22,10 @@ function PokemonCard({ url, name }) {
 
   return (
     <Card>
-      <Card.Img style={{backgroundColor: '#2e2e2e'}} variant='top' src={singlePokemonSprite} />
-      <Card.Title>{name}</Card.Title>
-      <Card.Text>
-        <ul>
+      <Card.Img style={{ backgroundColor: '#2e2e2e' }} variant='top' src={singlePokemonSprite} />
+      <Card.Title as='h3' style={{ margin: 'auto' }} >{name}</Card.Title>
+      <Card.Text style={{ margin: 'auto' }} >
+        <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
           {
             singlePokemonAbilities.map(move => (
               <li>{move['ability']['name']}</li>

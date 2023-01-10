@@ -45,35 +45,52 @@ function App() {
   return (
     <Container>
       <div data-testid="app">
-        <Navigation />
-        <InputGroup>
-          <FormControl
-            placeholder='Enter a pokemon'
-            aria-label='Enter a pokemon'
-            onChange={handlePokemonSearch}
-          />
-        </InputGroup>
-        <h1>Pokemon should appear here</h1>
+        <Row>
+          <Navigation />
+        </Row>
 
-        <Container>
-          <Row>
+        <Row>
+          <InputGroup>
+            <FormControl
+              placeholder='Enter a pokemon'
+              aria-label='Enter a pokemon'
+              onChange={handlePokemonSearch}
+            />
+          </InputGroup>
+        </Row>
 
-            {
-              filteredPokeData.length && filteredPokeData.map(pokemon => (
+        <Row>
+          <h1
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              paddingTop: '5px',
+              paddingBottom: '5px',
+              marginTop: '8px'
+            }}
+          >
+            Pokemon should appear here
+          </h1>
+        </Row>
 
-                <Col className='col-12 col-sm-6 col-md-4 col-xl-3'>
-                  <PokemonCard
-                    key={pokemon.name}
-                    name={pokemon.name}
-                    url={pokemon.url}
-                  />
-                </Col>
+        <Row>
 
-              ))
-            }
+          {
+            filteredPokeData.length && filteredPokeData.map(pokemon => (
 
-          </Row>
-        </Container>
+              <Col className='col-12 col-sm-6 col-md-4 col-xl-3 my-1'>
+                <PokemonCard
+                  key={pokemon.name}
+                  name={pokemon.name}
+                  url={pokemon.url}
+                />
+              </Col>
+
+            ))
+          }
+
+        </Row>
+
         <PokemonCard />
       </div>
     </Container>
