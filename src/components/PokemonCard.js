@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
 function PokemonCard({ url, name }) {
@@ -34,6 +34,9 @@ function PokemonCard({ url, name }) {
           }
         </ul>
       </Card.Text>
+      <Link to={`/${name}`} >
+        {name}
+      </Link>
     </Card>
   );
 }
