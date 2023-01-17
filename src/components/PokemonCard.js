@@ -10,7 +10,6 @@ function PokemonCard({ url, name }) {
   const fetchPokemonDetails = async () => {
     const response = await fetch(url);
     const responseData = await response.json();
-    console.log('single pokemon', responseData);
     const sprite = responseData['sprites']['front_default'];
     setSinglePokemonSprite(sprite);
     setSinglePokemonAbilities(responseData['abilities']);

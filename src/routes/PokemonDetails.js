@@ -12,7 +12,6 @@ function PokemonDetails() {
         const loadSinglePokemonData = async () => {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`);
             const jsonData = await response.json();
-            console.log(`useEffect PokemonDetails: `, jsonData);
             setPokemon(jsonData);
         };
 

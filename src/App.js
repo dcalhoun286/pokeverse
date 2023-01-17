@@ -17,7 +17,6 @@ function App() {
     const response = await fetch(pokeApi);
     const responseData = await response.json();
     const pokemonArray = responseData.results;
-    console.log('pokeApi response data', pokemonArray);
     setPokeData(pokemonArray);
   };
 
