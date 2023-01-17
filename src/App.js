@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Navigation } from './components/Navigation';
 import { Home } from './routes/Home';
+import { PokemonDetails } from './routes/PokemonDetails';
 
 const LIMIT = 150;
 const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
@@ -24,15 +26,19 @@ function App() {
   }, []);
 
   return (
-    <Container>
-      <div data-testid="app">
-        <Row>
-          <Navigation />
-        </Row>
-
-        <Home pokeData={pokeData} />
-      </div>
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <div data-testid="app">
+          <Row>
+            <Navigation />
+            <Routes>
+              <Route path='/' element={ <Home pokeData={pokeData} /> } />
+              <Route path='/:name' element={ <PokemonDetails /> } />
+            </Routes>
+          </Row>
+        </div>
+      </Container>
+    </BrowserRouter>
   );
 }
 
