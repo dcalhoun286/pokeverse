@@ -42,7 +42,6 @@ function App() {
               <Route path='/favorites' element={ <Favorites /> } />
             </Routes>
           </Row>
-          {`${favorites[0]} ${favorites[1]} ${favorites[2]} ${favorites[3]}`}
         </div>
       </Container>
     </BrowserRouter>

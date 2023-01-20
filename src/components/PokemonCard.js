@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
+import { FavoritesContext } from './context/FavoritesProvider';
+
 function PokemonCard({ url, name }) {
+
+  const { addFavorite } = useContext(FavoritesContext);
 
   const [ singlePokemonSprite, setSinglePokemonSprite ] = useState('');
   const [ singlePokemonAbilities, setSinglePokemonAbilities ] = useState([]);

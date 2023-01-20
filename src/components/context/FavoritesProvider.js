@@ -6,8 +6,15 @@ function FavoritesProvider ({ children }) {
 
     const [ favorites, setFavorites ] = useState(['this','is','context','state']);
 
+    const addFavorite = (newFavorite) => {
+        setFavorites([
+            ...favorites,
+            newFavorite
+        ]);
+    };
+
     return (
-        <FavoritesContext.Provider value={{favorites}}>
+        <FavoritesContext.Provider value={{favorites, addFavorite}}>
             {children}
         </FavoritesContext.Provider>
     )
