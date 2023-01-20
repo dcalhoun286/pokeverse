@@ -38,8 +38,14 @@ function PokemonCard({ url, name }) {
         </ul>
       </Card.Text>
       <Link to={`/${name}`} >
-        {name}
+        See {name} details
       </Link>
+      <Button
+        variant='primary'
+        onClick={()=>addFavorite(name)}
+      >
+        Add to Favorites
+      </Button>
     </Card>
   );
 }
