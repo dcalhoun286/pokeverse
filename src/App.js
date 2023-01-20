@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { FavoritesProvider } from './components/context/FavoritesProvider';
 import { FavoritesContext } from './components/context/FavoritesProvider';
 
 import { Navigation } from './components/Navigation';
@@ -16,6 +15,8 @@ function App() {
 
   const [ pokeData, setPokeData ] = useState([]);
 
+  const { favorites } = useContext(FavoritesContext);
+
   const fetchPokemonData = async () => {
     const response = await fetch(pokeApi);
     const responseData = await response.json();
@@ -28,6 +29,7 @@ function App() {
   }, []);
 
   return (
+
     <BrowserRouter>
       <Container>
         <div data-testid="app">
@@ -38,9 +40,11 @@ function App() {
               <Route path='/:name' element={ <PokemonDetails /> } />
             </Routes>
           </Row>
+          {`${favorites[0]} ${favorites[1]} ${favorites[2]} ${favorites[3]}`}
         </div>
       </Container>
     </BrowserRouter>
+
   );
 }
 
