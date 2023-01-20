@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import { FavoritesContext } from '../components/context/FavoritesProvider';
+import { PokemonCard } from '../components/PokemonCard';
 
 function Favorites () {
 
