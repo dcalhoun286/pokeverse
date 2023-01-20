@@ -27,19 +27,19 @@ function PokemonCard({ url, name }) {
     <Card>
       <Card.Img style={{ backgroundColor: '#2e2e2e' }} variant='top' src={singlePokemonSprite} />
       <Card.Title as='h3' style={{ margin: 'auto', marginBottom: '8px' }} >{name}</Card.Title>
-      <Card.Text style={{ margin: 'auto' }} >
+      <Card.Text as='div' style={{ margin: 'auto' }} >
         <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
           Abilities:
           {
             singlePokemonAbilities.map(move => (
-              <li>{move['ability']['name']}</li>
+              <li key={move.ability.name}>{move['ability']['name']}</li>
             ))
           }
         </ul>
+        <Link to={`/${name}`} >
+          See {name} details
+        </Link>
       </Card.Text>
-      <Link to={`/${name}`} >
-        See {name} details
-      </Link>
       <Button
         variant='primary'
         onClick={()=>addFavorite(name)}
