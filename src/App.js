@@ -7,6 +7,7 @@ import { FavoritesContext } from './components/context/FavoritesProvider';
 import { Navigation } from './components/Navigation';
 import { Home } from './routes/Home';
 import { PokemonDetails } from './routes/PokemonDetails';
+import { Favorites } from './routes/Favorites';
 
 const LIMIT = 150;
 const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
@@ -38,6 +39,7 @@ function App() {
             <Routes>
               <Route path='/' element={ <Home pokeData={pokeData} /> } />
               <Route path='/:name' element={ <PokemonDetails /> } />
+              <Route path='/favorites' element={ <Favorites /> } />
             </Routes>
           </Row>
           {`${favorites[0]} ${favorites[1]} ${favorites[2]} ${favorites[3]}`}
