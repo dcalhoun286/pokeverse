@@ -9,7 +9,11 @@ function Favorites () {
 
     return (
         <React.Fragment>
-
+            {
+                favorites.map(favorite => (
+                    <PokemonCard name={favorite} />   
+                ))
+            }
         </React.Fragment>
     )
 }
