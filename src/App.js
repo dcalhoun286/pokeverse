@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { FavoritesProvider } from './components/context/FavoritesProvider';
+import { FavoritesContext } from './components/context/FavoritesProvider';
 
 import { Navigation } from './components/Navigation';
 import { Home } from './routes/Home';
