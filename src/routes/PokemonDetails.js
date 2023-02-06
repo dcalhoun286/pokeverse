@@ -31,7 +31,7 @@ function PokemonDetails() {
                     <ul>
                         {
                             pokemon.abilities.map(ability => (
-                                <li>{ability.ability.name}</li>
+                                <li key={ability.ability.name}>{ability.ability.name}</li>
                             ))
                         }
                     </ul>
@@ -39,7 +39,7 @@ function PokemonDetails() {
                     <ul>
                         {
                             pokemon.types.map(type => (
-                                <li>{type.type.name}</li>
+                                <li key={type.type.name}>{type.type.name}</li>
                             ))
                         }
                     </ul>
@@ -47,7 +47,7 @@ function PokemonDetails() {
                     <ul>
                         {
                             pokemon.stats.map(stat => (
-                                <li>
+                                <li key={stat.stat.name}>
                                     <p>{stat.stat.name}</p>
                                     <p>{stat.base_stat}</p>
                                 </li>

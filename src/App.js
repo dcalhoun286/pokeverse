@@ -5,13 +5,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Home } from './routes/Home';
 import { PokemonDetails } from './routes/PokemonDetails';
+import { Favorites } from './routes/Favorites';
 
 const LIMIT = 150;
 const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
 
 function App() {
 
-  const [ pokeData, setPokeData ] = useState([]);
+  const [pokeData, setPokeData] = useState([]);
 
   const fetchPokemonData = async () => {
     const response = await fetch(pokeApi);
@@ -25,19 +26,22 @@ function App() {
   }, []);
 
   return (
+
     <BrowserRouter>
       <Container>
         <div data-testid="app">
           <Row>
             <Navigation />
             <Routes>
-              <Route path='/' element={ <Home pokeData={pokeData} /> } />
-              <Route path='/:name' element={ <PokemonDetails /> } />
+              <Route path='/' element={<Home pokeData={pokeData} />} />
+              <Route path='/:name' element={<PokemonDetails />} />
+              <Route path='/favorites' element={<Favorites />} />
             </Routes>
           </Row>
         </div>
       </Container>
     </BrowserRouter>
+
   );
 }
 
