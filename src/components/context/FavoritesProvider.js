@@ -13,8 +13,14 @@ function FavoritesProvider ({ children }) {
         ]);
     };
 
+    const removeFavorite = (pokemonToDelete) => {
+        setFavorites(
+            favorites.filter(favorite => favorite.name !== pokemonToDelete)
+        );
+    };
+
     return (
-        <FavoritesContext.Provider value={{favorites, addFavorite}}>
+        <FavoritesContext.Provider value={{favorites, addFavorite, removeFavorite}}>
             {children}
         </FavoritesContext.Provider>
     )
