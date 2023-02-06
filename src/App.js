@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import { FavoritesContext } from './components/context/FavoritesProvider';
 
 import { Navigation } from './components/Navigation';
 import { Home } from './routes/Home';
@@ -14,9 +12,7 @@ const pokeApi = `https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`;
 
 function App() {
 
-  const [ pokeData, setPokeData ] = useState([]);
-
-  const { favorites } = useContext(FavoritesContext);
+  const [pokeData, setPokeData] = useState([]);
 
   const fetchPokemonData = async () => {
     const response = await fetch(pokeApi);
@@ -37,9 +33,9 @@ function App() {
           <Row>
             <Navigation />
             <Routes>
-              <Route path='/' element={ <Home pokeData={pokeData} /> } />
-              <Route path='/:name' element={ <PokemonDetails /> } />
-              <Route path='/favorites' element={ <Favorites /> } />
+              <Route path='/' element={<Home pokeData={pokeData} />} />
+              <Route path='/:name' element={<PokemonDetails />} />
+              <Route path='/favorites' element={<Favorites />} />
             </Routes>
           </Row>
         </div>

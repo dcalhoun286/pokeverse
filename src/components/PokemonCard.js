@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 
 import { FavoritesContext } from './context/FavoritesProvider';
 
-function PokemonCard({ url, name }) {
+function PokemonCard({ pokemon, url, name }) {
 
   const { addFavorite } = useContext(FavoritesContext);
 
@@ -14,13 +14,14 @@ function PokemonCard({ url, name }) {
   const fetchPokemonDetails = async () => {
     const response = await fetch(url);
     const responseData = await response.json();
-    const sprite = responseData['sprites']['front_default'];
+    const sprite = responseData.sprites.front_default;
     setSinglePokemonSprite(sprite);
-    setSinglePokemonAbilities(responseData['abilities']);
+    setSinglePokemonAbilities(responseData.abilities);
   };
 
   useEffect(() => {
     fetchPokemonDetails();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -32,7 +33,7 @@ function PokemonCard({ url, name }) {
           Abilities:
           {
             singlePokemonAbilities.map(move => (
-              <li key={move.ability.name}>{move['ability']['name']}</li>
+              <li key={move.ability.name}>{move.ability.name}</li>
             ))
           }
         </ul>
@@ -42,9 +43,9 @@ function PokemonCard({ url, name }) {
       </Card.Text>
       <Button
         variant='primary'
-        onClick={()=>addFavorite(name)}
+        onClick={()=>addFavorite(pokemon)}
       >
-        Add to Favorites
+        Add {name} to Favorites
       </Button>
     </Card>
   );

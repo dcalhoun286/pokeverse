@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -14,8 +15,12 @@ function Navigation() {
           Pokeverse
         </Navbar.Brand>
         <Nav className='me-auto'>
-          <Nav.Link href='/'>All Pokemon</Nav.Link>
-          <Nav.Link href='/favorites'>My Favorites</Nav.Link>
+          <Nav.Link>
+            <NavLink to='/'>All Pokemon</NavLink>
+          </Nav.Link>
+          <Nav.Link>
+            <NavLink to='/favorites'>My Favorites</NavLink>
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>

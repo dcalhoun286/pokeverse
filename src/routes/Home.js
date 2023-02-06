@@ -5,37 +5,37 @@ import { PokemonCard } from '../components/PokemonCard';
 
 function Home({ pokeData }) {
 
-    const [ filteredPokeData, setFilteredPokeData ] = useState([]);
+    const [filteredPokeData, setFilteredPokeData] = useState([]);
 
     const handlePokemonSearch = (e) => {
         e.preventDefault();
-    
+
         if (e.target.value.length) {
-          const regex = new RegExp(e.target.value, 'gi');
-          const filtered = pokeData.filter(pokemon => {
-            return pokemon.name.match(regex) || pokemon.name.toLowerCase().includes(e.target.value.toLowerCase());
-          });
-    
-          setFilteredPokeData(filtered);
-    
+            const regex = new RegExp(e.target.value, 'gi');
+            const filtered = pokeData.filter(pokemon => {
+                return pokemon.name.match(regex) || pokemon.name.toLowerCase().includes(e.target.value.toLowerCase());
+            });
+
+            setFilteredPokeData(filtered);
+
         } else {
-          setFilteredPokeData([...pokeData]);
+            setFilteredPokeData([...pokeData]);
         }
-    
+
     };
 
     useEffect(() => {
-        setFilteredPokeData([...pokeData])
-    },[pokeData]);
+        setFilteredPokeData([...pokeData]);
+    }, [pokeData]);
 
     return (
         <React.Fragment>
             <Row>
                 <InputGroup>
                     <FormControl
-                    placeholder='Enter a pokemon'
-                    aria-label='Enter a pokemon'
-                    onChange={handlePokemonSearch}
+                        placeholder='Enter a pokemon'
+                        aria-label='Enter a pokemon'
+                        onChange={handlePokemonSearch}
                     />
                 </InputGroup>
             </Row>
@@ -43,11 +43,11 @@ function Home({ pokeData }) {
             <Row>
                 <h1
                     style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    paddingTop: '5px',
-                    paddingBottom: '5px',
-                    marginTop: '8px'
+                        display: 'flex',
+                        justifyContent: 'center',
+                        paddingTop: '5px',
+                        paddingBottom: '5px',
+                        marginTop: '8px',
                     }}
                 >
                     Pokemon should appear here
@@ -59,13 +59,13 @@ function Home({ pokeData }) {
                 {
                     filteredPokeData.length && filteredPokeData.map(pokemon => (
 
-                    <Col className='col-12 col-sm-6 col-md-4 col-xl-3 my-1'>
-                        <PokemonCard
-                        key={pokemon.name}
-                        name={pokemon.name}
-                        url={pokemon.url}
-                        />
-                    </Col>
+                        <Col key={pokemon.name} className='col-12 col-sm-6 col-md-4 col-xl-3 my-1'>
+                            <PokemonCard
+                                name={pokemon.name}
+                                url={pokemon.url}
+                                pokemon={pokemon}
+                            />
+                        </Col>
 
                     ))
                 }
