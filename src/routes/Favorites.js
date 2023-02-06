@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
-
+import { NavLink } from 'react-router-dom';
 import { FavoritesContext } from '../components/context/FavoritesProvider';
 import { PokemonCard } from '../components/PokemonCard';
 
 function Favorites () {
 
-    const { favorites, removeFavorite } = useContext(FavoritesContext);
+    const { favorites } = useContext(FavoritesContext);
 
     return (
 
-        favorites
+        favorites?.length
         ?   (
                 <React.Fragment>
                 {
@@ -21,7 +21,6 @@ function Favorites () {
                                 url={favorite.url}
                                 pokemon={favorite}
                             />
-                            <Button onClick={()=>removeFavorite(favorite.name)}>Remove {favorite.name} from favorites</Button>  
                         </React.Fragment>
                     ))
                 }
@@ -30,9 +29,10 @@ function Favorites () {
         :   (
                 <React.Fragment>
                     <Card>
-                        <Card.Text>
-                            Loading ...
+                        <Card.Text as='h3'>
+                            Your favorites are empty ...
                         </Card.Text>
+                        <Button variant='primary'><NavLink to='/'>Back to All Pokemon</NavLink></Button>
                     </Card>
                 </React.Fragment>
             )

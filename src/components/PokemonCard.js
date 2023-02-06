@@ -6,7 +6,7 @@ import { FavoritesContext } from './context/FavoritesProvider';
 
 function PokemonCard({ pokemon, url, name }) {
 
-  const { addFavorite } = useContext(FavoritesContext);
+  const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
   const [ singlePokemonSprite, setSinglePokemonSprite ] = useState('');
   const [ singlePokemonAbilities, setSinglePokemonAbilities ] = useState([]);
@@ -41,12 +41,23 @@ function PokemonCard({ pokemon, url, name }) {
           See {name} details
         </Link>
       </Card.Text>
-      <Button
-        variant='primary'
-        onClick={()=>addFavorite(pokemon)}
-      >
-        Add {name} to Favorites
-      </Button>
+      {
+        favorites.includes(pokemon)
+        ? <Button
+            variant='primary'
+            onClick={()=>removeFavorite(name)}
+          >
+            Remove {name} from favorites
+          </Button>
+        : <Button
+            variant='primary'
+            onClick={()=>addFavorite(pokemon)}
+          >
+            Add {name} to Favorites
+          </Button>
+
+      }
+
     </Card>
   );
 }

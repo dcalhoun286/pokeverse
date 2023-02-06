@@ -6,3 +6,8 @@ body {
 h1 {
   font-weight: 800 !important;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+}
