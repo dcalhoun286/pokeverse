@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 import { FavoritesContext } from '../components/context/FavoritesProvider';
 import { PokemonCard } from '../components/PokemonCard';
 
 function Favorites () {
 
-    const { favorites } = useContext(FavoritesContext);
+    const { favorites, removeFavorite } = useContext(FavoritesContext);
 
     return (
 
@@ -15,12 +15,14 @@ function Favorites () {
                 <React.Fragment>
                 {
                     favorites.map(favorite => (
-                        <PokemonCard
-                            key={favorite.name}
-                            name={favorite.name}
-                            url={favorite.url}
-                            pokemon={favorite}
-                        />   
+                        <React.Fragment key={favorite.name}>
+                            <PokemonCard
+                                name={favorite.name}
+                                url={favorite.url}
+                                pokemon={favorite}
+                            />
+                            <Button onClick={()=>removeFavorite(favorite.name)}>Remove {favorite.name} from favorites</Button>  
+                        </React.Fragment>
                     ))
                 }
                 </React.Fragment>
